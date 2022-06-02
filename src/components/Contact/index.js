@@ -36,22 +36,28 @@ function handleSubmit(e) {
     return (
         <section>
           <h1>Contact me</h1>
-          <form id="contact-form" onSubmit={handleSubmit}>
+          <form id="contact-form" onBlur={handleSubmit}>
             <div>
                 <label htmlFor="name">Name:</label>
-                <input type="text" defaultValue={name} onChange={handleChange} name="name"/>
+                <input type="text" defaultValue={name} onBlur={handleChange} name="name"/>
             </div>
             <div>
                 <label htmlFor="email">Email address:</label>
-                <input type="email" onChange={handleChange} name="email" defaultValue={email}/>
+                <input type="email" onBlur={handleChange} name="email" defaultValue={email}/>
             </div>
             <div>
                 <label htmlFor="message">Message:</label>
-                <textarea name="message" rows="5" onChange={handleChange} defaultValue={message}/>
+                <textarea name="message" rows="5" onBlur={handleChange} defaultValue={message}/>
             </div>
+            {errorMessage && (
+            <div>
+                <p className="error-text">{errorMessage}</p>
+            </div>
+            )}
             <button type="submit">Submit</button>
           </form>
         </section>
+        
       )
 
 }
